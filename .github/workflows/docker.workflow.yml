@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   test_and_validate:
-    uses: VeronicaAxelsson/microblog/.github/workflows/test.workflow.yml@main
+    uses: VeronicaAxelsson/microblog/.github/workflows/test.workflow.yml@master
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
