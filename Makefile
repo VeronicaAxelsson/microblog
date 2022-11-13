@@ -163,6 +163,12 @@ test-html: exec-tests
 
 
 
+# target: docker-test                     - Run tests and display code coverage in docker
+.PHONY: test-docker
+test-docker:
+	docker-compose run test
+
+
 ## target: clean-py                     - Remove generated python files
 .PHONY: clean-py
 clean-py:
