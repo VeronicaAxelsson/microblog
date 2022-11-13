@@ -5,13 +5,12 @@ on:
     types: [push]
 
 jobs:
+  test_and_validate:
+    uses: VeronicaAxelsson/microblog/.github/workflows/test.workflow.yml@main
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
-      - name: Test and Validate
-        uses: VeronicaAxelsson/microblog/.github/workflows/test.workflow.yml@main
-        
       - name: Check out the repo
         uses: actions/checkout@v3
       
@@ -33,4 +32,3 @@ jobs:
           context: .
           push: true
           tags: veronicaaxelsson/microblog:latest,veronicaaxelsson/microblog:1.0.0-prod
-          labels: ${{ steps.meta.outputs.labels }}
