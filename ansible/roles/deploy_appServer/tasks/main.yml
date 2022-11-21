@@ -1,0 +1,16 @@
+---
+- name: Remove image
+  docker_image:
+    name: "{{ image_name }}"
+    state: absent
+    force_absent: yes
+
+- name: Pull microblog image and launch container
+  docker_container:
+    name: "{{ container_name }}"
+    image: "{{ image_name }}"
+    state: started
+    pull: yes
+    detach: yes
+    ports:
+      - "8000:5000"

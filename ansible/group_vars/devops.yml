@@ -1,0 +1,11 @@
+---
+root_password: $6$vvR2v3p4X$uj7GldCVW7rVaZOwovXT5eqArWEaTRzSHs98x6xsQmA8xZx9wbiFhZgHt0ioXxvE5jojWRr4lsQ.DrPGn7r/D.
+
+server_user: deploy
+server_user_pass: $6$nP/12CA2dFyVM$VJGqkC/lH2lwKSadxqjBaPzvPt9tu0gquQ1kgwZAQE.TP.M9f/4LDJQFYw0f11szPEhSKGM/2qwJTPc57dGG1.
+server_user_groups:
+  - sudo
+
+ansible_python_interpreter: /usr/bin/python3
+
+lb_method: ip_hash

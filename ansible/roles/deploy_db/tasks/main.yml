@@ -1,0 +1,15 @@
+---
+- name: Remove image
+  docker_image:
+    name: "{{ image_name }}"
+    state: absent
+    force_absent: yes
+
+- name: Pull mysql image and launch container
+  docker_container:
+    name: "{{ container_name }}"
+    image: "{{ image_name }}"
+    env:
+      MYSQL_ROOT_PASSWORD: password
+    state: started
+    pull: yes
