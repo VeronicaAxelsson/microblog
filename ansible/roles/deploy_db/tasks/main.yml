@@ -10,6 +10,12 @@
     name: "{{ container_name }}"
     image: "{{ image_name }}"
     env:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_DATABASE: "microblog"
+      MYSQL_USER: "microblog"
+      MYSQL_PASSWORD: "password"
     state: started
     pull: yes
+    restart_policy: always
+    ports:
+      - "3306:3306"

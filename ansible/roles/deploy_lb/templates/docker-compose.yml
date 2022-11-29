@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  nginx:
+    image: nginx/nginx-prometheus-exporter:0.4.2
+    restart: always
+    ports:
+      - 9113:9113
+    command:
+      - "--nginx.scrape-uri=https://{{ groups['loadBalancer'][0] }}/metrics"
+      - "--nginx.retries=10"
+      - "--nginx.ssl-verify=false"
+      - "--web.telemetry-path=/prometheus"

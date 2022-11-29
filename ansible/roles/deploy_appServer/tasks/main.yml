@@ -12,5 +12,8 @@
     state: started
     pull: yes
     detach: yes
+    restart_policy: always
+    env:
+      DATABASE_URL: mysql+pymysql://microblog:password@{{ groups['database'][0] }}:3306/microblog
     ports:
       - "8000:5000"

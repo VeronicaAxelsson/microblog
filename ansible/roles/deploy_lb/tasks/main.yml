@@ -51,3 +51,14 @@
     src: /etc/nginx/sites-available/load-balancer.conf
     path: /etc/nginx/sites-enabled/load-balancer.conf
     state: link
+
+- name: copy Docker Compose files
+  template:
+    src: docker-compose.yml
+    dest: ./docker-compose.yml
+
+- name: deploy Docker Compose stack
+  community.docker.docker_compose:
+    project_src: ./
+    files:
+      - docker-compose.yml
