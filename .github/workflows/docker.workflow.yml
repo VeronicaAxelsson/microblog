@@ -16,6 +16,8 @@ jobs:
   check_securetiy_with_snyk:
     needs: test_and_validate
     uses: VeronicaAxelsson/microblog/.github/workflows/snyk.workflow.yml@master
+    secrets:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   push_to_registry:
     needs: test_and_validate
     name: Push Docker image to Docker Hub
