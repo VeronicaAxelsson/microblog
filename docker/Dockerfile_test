@@ -15,5 +15,3 @@ WORKDIR /home/microblog
 RUN apk add make=4.3-r0 --no-cache
 
 ENTRYPOINT ["./boot_test.sh"]
-# CMD /bin/sh
-
