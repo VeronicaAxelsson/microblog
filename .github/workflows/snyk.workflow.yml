@@ -4,8 +4,18 @@ on:
     secrets:
       SNYK_TOKEN:
         required: true
-jobs:     
-  snyk-analysis:
+      
+jobs:
+  snyk-analysis-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run Snyk to check Docker image for vulnerabilities
+      uses: snyk/actions/docker@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        image: your/image-to-test
+  snyk-analysis-python:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
