@@ -14,7 +14,7 @@ jobs:
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
-        image: docker/Dockerfile_prod
+        image: docker-compose.yml
   snyk-analysis-python:
     runs-on: ubuntu-latest
     steps:
