@@ -13,13 +13,8 @@ on:
 jobs:
   test_and_validate:
     uses: VeronicaAxelsson/microblog/.github/workflows/test.workflow.yml@master
-  check_securetiy_with_snyk:
-    needs: test_and_validate
-    uses: VeronicaAxelsson/microblog/.github/workflows/snyk.workflow.yml@master
-    secrets:
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   push_to_registry:
-    needs: [test_and_validate, check_securetiy_with_snyk]
+    needs: test_and_validate
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
@@ -47,3 +42,8 @@ jobs:
           push: ${{ github.ref_type == 'tag' }}
           tags: veronicaaxelsson/microblog:1.0.0-prod
           labels: ${{ steps.meta.outputs.labels }}
+  check_securetiy_with_snyk:
+    needs: push_to_registry
+    uses: VeronicaAxelsson/microblog/.github/workflows/snyk.workflow.yml@master
+    secrets:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
