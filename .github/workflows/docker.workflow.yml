@@ -19,7 +19,7 @@ jobs:
     secrets:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   push_to_registry:
-    needs: test_and_validate
+    needs: [test_and_validate, check_securetiy_with_snyk]
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
