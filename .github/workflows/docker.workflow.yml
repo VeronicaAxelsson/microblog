@@ -14,9 +14,10 @@ jobs:
   test_and_validate:
     uses: VeronicaAxelsson/microblog/.github/workflows/test.workflow.yml@master
   check_securetiy_with_snyk:
+    needs: test_and_validate
     uses: VeronicaAxelsson/microblog/.github/workflows/snyk.workflow.yml@master
   push_to_registry:
-    needs: [test_and_validate, check_securetiy_with_snyk]
+    needs: test_and_validate
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
