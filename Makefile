@@ -7,6 +7,7 @@
 #
 # General setup
 #
+export PROMETHEUS_MULTIPROC_DIR=/tmp
 
 # Set default target
 .DEFAULT_GOAL := test
@@ -29,6 +30,7 @@ ifeq (, $(@shell which firefox.exe))
 else
 	browser = firefox
 endif
+
 
 
 # Detect OS
@@ -55,8 +57,6 @@ THIS_MAKEFILE := $(call WHERE-AM-I)
 
 # Echo some nice helptext based on the target comment
 HELPTEXT = $(ECHO) "$(ACTION)--->" `egrep "^\# target: $(1) " $(THIS_MAKEFILE) | sed "s/\# target: $(1)[ ]*-[ ]* / /g"` "$(NO_COLOR)"
-
-
 
 # ----------------------------------------------------------------------------
 #
