@@ -42,3 +42,8 @@ jobs:
           push: ${{ github.ref_type == 'tag' }}
           tags: veronicaaxelsson/microblog:1.0.0-prod
           labels: ${{ steps.meta.outputs.labels }}
+  check_securetiy_with_snyk:
+    needs: push_to_registry
+    uses: VeronicaAxelsson/microblog/.github/workflows/snyk.workflow.yml@master
+    secrets:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
