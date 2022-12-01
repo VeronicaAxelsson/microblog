@@ -8,9 +8,9 @@ COPY requirements requirements
 COPY gunicorn_config.py gunicorn_config.py
 
 RUN <<-EOF 
+    apk update krb5 --no-cache
     python -m venv venv 
     venv/bin/pip3 install -r requirements.txt
-    venv/bin/pip3 install krb5=1.19.4
     adduser -D microblog
     chown -R microblog:microblog ./
 EOF
