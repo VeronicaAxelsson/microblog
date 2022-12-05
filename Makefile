@@ -150,7 +150,7 @@ exec-tests: test-unit test-integration
 
 # target: test                         - Run tests and display code coverage
 .PHONY: test
-test: validate exec-tests
+test: test-bandit validate exec-tests
 	${py} -m coverage report  --rcfile=.coveragerc
 	$(MAKE) clean-cov
 
@@ -168,6 +168,11 @@ test-html: exec-tests
 test-docker:
 	docker-compose run test
 
+
+# target: docker-test                     - Run tests and display code coverage in docker
+.PHONY: test-bandit
+test-bandit:
+	bandit -r app
 
 ## target: clean-py                     - Remove generated python files
 .PHONY: clean-py

@@ -16,7 +16,6 @@ from prometheus_flask_exporter.multiprocess import GunicornInternalPrometheusMet
 from app.config import ProdConfig, RequestFormatter
 
 
-
 metrics = GunicornInternalPrometheusMetrics.for_app_factory()
 db = SQLAlchemy()
 migrate = Migrate()
